@@ -1,0 +1,124 @@
+<?php
+
+?>
+<!DOCTYPE HTML>
+<html xml:ns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+    <head>
+ 
+  <title>list Titoli</title>
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700|Syncopate:400,700' rel='stylesheet' type='text/css'>
+
+		<!--<noscript>
+		<link rel="stylesheet" href="css/skel-noscript.css" />
+		<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>-->
+		<link type="text/css" rel="stylesheet" href="css/main.css"/>
+  
+
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+   <script type="text/javascript" src="js/skel.min.js"></script>
+    <script type="text/javascript" src="js/html5shiv.min.js"></script>
+    
+<style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
+</style>
+
+		<script type="text/javascript">
+		<!--
+		function clearDefault(el) {
+		if (el.defaultValue==el.value) el.value = ""
+		}
+		// -->
+		</script>
+
+
+</head>
+<body id="page">
+
+ <div id="subHeader">					
+		<div class="claim">
+		<a href="http://manage.haveasync.com">
+		<span class="have">have</span>
+		<span class="havea">a</Span>
+		<span class="haveasync">sync</span>
+		</a>
+		<span class="logo"><a href="http://manage.haveasync.com/"><img src="http://www.haveasync.com/images/logoSenza.png"></a></span>
+		<span class="musiclic">music licensing</span>
+		</div>
+</div>
+<div id="container">
+
+
+				<nav id="nav">
+				<ul>
+				<?php if(isset($_SESSION['user'])){?>		
+				<li><a href="index.php?page=titoli/listTitoli" class=button>gestione titoli</a></li>
+				<li> <a  href="index.php?action=logout" class=button>logout</a></li>
+				<?php }?>
+				</ul>
+				</nav>
+		
+			
+			
+
+								
+				<div id="latoSX">
+					                           <?php if ($flashes): ?>
+					                            <ul id="flashes">
+					                            <?php foreach ($flashes as $flash): ?>
+					                                <li><?php echo $flash; ?></li>
+					                            <?php endforeach; ?>
+					                            </ul>
+					                        <?php endif; ?>
+
+					                        <?php require $template; ?>
+				</div>
+					  
+		
+							
+				<div id="latoDX">
+
+ 					
+
+
+   
+     
+				</div>
+
+  				  
+
+
+
+
+</div>
+
+
+<img style="display: none;" id="ajax_loader" alt="Please wait" src="/images/ajax-loader.gif"/>
+<img style="position: absolute; display: none; z-index: 2000;" id="bar_loader" alt="Please wait" src="/images/cloud_loader.gif"/>
+<span id="baseurl" style="visibility: hidden">/haveasync/web/backend_dev.php</span>
+<span id="culture" style="visibility: hidden">it</span>
+
+<div style="display: none;" id="login-dialog"></div>
+<div style="display: none;" id="legenda"></div>
+<div style="z-index: 1000; position: fixed; left: 0; right: 0;margin-left: auto;margin-right: auto; bottom: 0; height: 30px; width: 600px" id="fplayer">&nbsp;</div>
+<!--<script type="text/javascript" src="/haveasync/web/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jquery-validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jquery-validate/localization/messages_it.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/commons.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/backend/backend_commons.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jqgrid/i18n/grid.locale-it.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jqgrid/src/grid.base.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jqgrid/src/jquery.fmatter.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jqgrid/src/grid.custom.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/backend/titles/titles-pager.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/jquery.corners.js"></script>
+<script type="text/javascript" src="/haveasync/web/js/skypecheck.js"></script>-->
+
+</div>
+
+</body>
+</html>
