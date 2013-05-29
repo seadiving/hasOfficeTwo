@@ -1,8 +1,10 @@
 <?php
+include("../lang/messages.php");
 
+include ("../lang/lang.php");
 ?>
 <!DOCTYPE HTML>
-<html xml:ns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<html xml:ns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
  
   <title>list Titoli</title>
@@ -37,6 +39,7 @@
 
 </head>
 <body id="page">
+<div id="latoSX">
 
  <div id="subHeader">					
 		<div class="claim">
@@ -55,8 +58,8 @@
 				<nav id="nav">
 				<ul>
 				<?php if(isset($_SESSION['user'])){?>		
-				<li><a href="index.php?page=titoli/listTitoli" class=button>gestione titoli</a></li>
-				<li> <a  href="index.php?action=logout" class=button>logout</a></li>
+				<li><a href="index.php?page=titoli/listTitoli&lang=<?php echo $lang; ?>" class=button>gestione titoli</a></li>
+				<li> <a  href="index.php?action=logout&lang=<?php echo $lang; ?>" class=button>logout</a></li>
 				<?php }?>
 				</ul>
 				</nav>
@@ -65,7 +68,7 @@
 			
 
 								
-				<div id="latoSX">
+				
 					                           <?php if ($flashes): ?>
 					                            <ul id="flashes">
 					                            <?php foreach ($flashes as $flash): ?>
@@ -75,17 +78,10 @@
 					                        <?php endif; ?>
 
 					                        <?php require $template; ?>
-				</div>
+				
 					  
 		
 							
-				<div id="latoDX">
-
- 					
-
-
-   
-     
 				</div>
 
   				  
@@ -95,7 +91,21 @@
 
 </div>
 
+<div id="latoDX">
 
+ 					
+<center><img src="img/fotoHas1.png" width=700></center>
+<BR>
+Insert here:
+<ul>
+<li>Form to buy a certain number of categorization, prices for it and credit card module to pay
+<li>News: special new panel for Inside news.
+<li>Skype
+<li>a link to a form to contact us (so we know that yhe request is arriving from an internal User
+</ul>
+   
+     
+				</div>
 <img style="display: none;" id="ajax_loader" alt="Please wait" src="/images/ajax-loader.gif"/>
 <img style="position: absolute; display: none; z-index: 2000;" id="bar_loader" alt="Please wait" src="/images/cloud_loader.gif"/>
 <span id="baseurl" style="visibility: hidden">/haveasync/web/backend_dev.php</span>

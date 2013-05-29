@@ -11,27 +11,27 @@ class listTitoli {
 -->
 
  <div id="searchPanel">
-
+<span class="nero"><?php echo __($cerca); ?></span>
 <div id="search-form">
-
+<center>
     <form action="index.php?page=titoli/listTitoli" method="post">
         <fieldset>
             <label for="search-title">Titolo: </label>
             <input name="search-title" id="search-title" type="text">
             <label for="search-isrc">Isrc: </label>
-            <input name="search-isrc" id="search-isrc" type="text" ><br>
+            <input name="search-isrc" id="search-isrc" type="text" ><br><br>
             <input id="search-button" value="Search" type="submit" class="button">
         </fieldset>
     </form>
+</center>
 </div>
-
-
+<hr style="border:1px #ccc dashed;">
       
      
             
-			<div></div>
+			
 			<div>
-                <table cellpadding=5 cellspacing=5 style="width: 380px;position:relative; left:15px; " class="ui-jqgrid-btable" aria-labelledby="gbox_results_grid" aria-multiselectable="false" role="grid" id="results_grid" border="0" cellpadding="0" cellspacing="0" >
+                <table  class="ui-jqgrid-btable" aria-labelledby="gbox_results_grid" aria-multiselectable="false" role="grid" id="results_grid" border="0" cellpadding="0" cellspacing="0" >
                     <tbody>
                         
                          <?php foreach ($result as $titolo): ?>
@@ -48,7 +48,8 @@ class listTitoli {
    
 
     <div>&nbsp;</div>
-    <div class="paginatore">
+
+ <div class="paginatore">
         <div id="pg_pager" class="ui-pager-control" role="group">
                                            <!-- <select name=="perPage">
                                                 <option role="option" value="15" selected="selected">15</option>
@@ -58,7 +59,7 @@ class listTitoli {
             <?php echo $linkPager['all']; ?>
         </div>
         
-    </div>
+    </div>   
     
 </div>
 
