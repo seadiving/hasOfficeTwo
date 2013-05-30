@@ -270,7 +270,7 @@ final class TitoliDao {
         $extraVars = array('searchTitle'=>$search->getTitolo(),'searchIsrc'=>$search->getIsrc());
         $params = array(
         'totalItems' => $stmt->rowCount(),
-        'perPage' => 10,
+        'perPage' => 5,
         'delta' => 8,
         'mode' => 'Jumping',
         'separator' => '|',
