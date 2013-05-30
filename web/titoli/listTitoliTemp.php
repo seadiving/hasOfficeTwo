@@ -17,9 +17,9 @@ class listTitoli {
     <form action="index.php?page=titoli/listTitoli" method="post">
         <fieldset>
             <label for="search-title">Titolo: </label>
-            <input name="search-title" id="search-title" type="text">
+            <input name="search-title" id="search-title" type="text" value="<?php echo array_key_exists('searchTitle', $_REQUEST)?$_REQUEST['searchTitle']:""; ?>">
             <label for="search-isrc">Isrc: </label>
-            <input name="search-isrc" id="search-isrc" type="text" ><br>
+            <input name="search-isrc" id="search-isrc" type="text" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>"><br>
             <input id="search-button" value="Search" type="submit" class="button">
         </fieldset>
     </form>
@@ -74,7 +74,14 @@ class listTitoli {
         });
        jQuery(".ui-jqgrid-btable .ui-widget-content").click(function() {
    
-        window.location.href = "index.php?page=titoli/addTitoli&id="+jQuery(this).attr('id')+"<?php echo array_key_exists('pageID', $_GET)?'&pageID='.$_GET['pageID']:"";?>";
+        window.location.href = "index.php?page=titoli/addTitoli&id="+jQuery(this).attr('id')+
+                        "<?php 
+                        echo array_key_exists('pageID', $_GET)?'&pageID='.$_GET['pageID']:"";
+                        echo array_key_exists('searchTitle', $_REQUEST)?'&searchTitle='.$_REQUEST['searchTitle']:"";
+                        echo array_key_exists('searchIsrc', $_REQUEST)?'&searchIsrc='.$_REQUEST['searchIsrc']:"";
+                        
+                        
+                        ?>";
         });
         jQuery("perPage").change(function() {
          window.location.href = "index.php?page=titoli/listTitoli&perPage="+jQuery(this).attr("id");

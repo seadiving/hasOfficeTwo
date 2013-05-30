@@ -67,13 +67,14 @@ final class Index {
             'Titoli' => '../model/Titoli.php',
             'Utente' => '../model/Utente.php',
             'Permesso' => '../model/Permesso.php',
+            'Etichetta' => '../model/Etichetta.php',
             'TitoliSearchCriteria' => '../dao/TitoliSearchCriteria.php',
             'UserSearchCriteria' => '../dao/UserSearchCriteria.php',
             'TitoliValidator' => '../validation/TitoliValidator.php',
             'Utils' => '../util/Utils.php',
             'Pager_Common' => '../Pager/Common.php',
             'Pager_Sliding' => '../Pager/Sliding.php',
-			'Pager_Jumping' => '../Pager/Jumping.php',
+            'Pager_Jumping' => '../Pager/Jumping.php',
             'Pager' => '../Pager/Pager.php'
         );
         if (!array_key_exists($name, $classes)) {
