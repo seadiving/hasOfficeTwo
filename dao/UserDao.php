@@ -142,7 +142,7 @@ final class UserDao {
             }*/
         }
         $sql .= ' ORDER BY ' . $orderBy;
-        echo "query list".$sql;
+        //echo "query list".$sql;
         return $sql;
     }
     

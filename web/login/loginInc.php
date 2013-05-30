@@ -1,13 +1,4 @@
 <?php
-/*
-require_once '../../util/Utils.php';
-require_once '../../model/Permesso.php';
-require_once '../../model/Utente.php';
-require_once '../../dao/UserDao.php';
-require_once '../../validation/TitoliValidator.php';
-require_once '../../dao/UserSearchCriteria.php';
-require_once '../../flash/Flash.php';
- * */
 
 //session_start();
 if(array_key_exists('action', $_GET) && $_GET['action'] == 'logout'){
