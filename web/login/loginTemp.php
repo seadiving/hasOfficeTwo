@@ -7,13 +7,13 @@
 		<tr>
 			<th><label for="username">Username</label></th>
 			<td>
-						<input name="username" class="input" id="username_0" type="text" >
+						<input name="username" class="input" id="username_0" type="text" value="<?php echo array_key_exists('username', $_REQUEST)?$_REQUEST['username']:""; ?>" >
 </td>
 		</tr>
 		<tr>
 			<th><label for="signin_password">Password</label></th>
 			<td>
-						<input name="password" class="input" id="password_0" type="password" ></td>
+						<input name="password" class="input" id="password_0" type="password" value="<?php echo array_key_exists('password', $_REQUEST)?$_REQUEST['password']:""; ?>" ></td>
 		</tr>
 		
                 <!--

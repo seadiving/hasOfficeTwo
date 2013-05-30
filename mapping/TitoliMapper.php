@@ -106,7 +106,22 @@ final class TitoliMapper {
         if (array_key_exists('cantato', $properties)) {
             $titoli->setCantato($properties['cantato']);
         }
-        
+        //aggiunti
+         if (array_key_exists('compositore', $properties)) {
+            $titoli->setCompositore($properties['compositore']);
+        }
+          if (array_key_exists('genere', $properties)) {
+            $titoli->setGenere($properties['genere']);
+        }       
+          if (array_key_exists('subgenere', $properties)) {
+            $titoli->setSubgenere($properties['subgenere']);
+        }
+           if (array_key_exists('prezzo_minimo', $properties)) {
+            $titoli->setPrezzoMinimo($properties['prezzo_minimo']);
+        }
+        if (array_key_exists('testo_brano', $properties)) {
+            $titoli->setTestoBrano($properties['testo_brano']);
+        }             
         //aggiunti da trasformare
         if (array_key_exists('Sproduzioni_casa', $properties)) {
             $appo = array();

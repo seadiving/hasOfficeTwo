@@ -11,15 +11,17 @@ require_once '../../util/SessionManage.php';
 //$status = Utils::getUrlParam('sSearch');
 //TitoliValidator::validateStatus($status);
 //echo 'pippo';
-$searchTitle = array_key_exists('search-title', $_POST)?$_POST['search-title']:null;//Utils::getUrlParam('search-title');
-$searchIsrc = array_key_exists('search-isrc', $_POST)?$_POST['search-isrc']:null;//Utils::getUrlParam('search-isrc');
-//echo 'pluto';
+$searchTitle = array_key_exists('searchTitle', $_REQUEST)? $_REQUEST['searchTitle']:null;
+$searchIsrc = array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:null;//Utils::getUrlParam('search-isrc');
+$searchFindFor = array_key_exists('searchFindFor', $_REQUEST)?$_REQUEST['searchFindFor']:null;
 $dao = new TitoliDao();
 $search = new TitoliSearchCriteria();
 if($searchTitle !== null && $searchTitle !== '')
     $search->setTitolo($searchTitle);
 if($searchIsrc !== null && $searchIsrc !== '')
     $search->setIsrc($searchIsrc);
+if($searchFindFor !== null && $searchFindFor !== '')
+    $search->setTipoRicerca($searchFindFor);
 //$search->setStatus($status);
 
 // data for template

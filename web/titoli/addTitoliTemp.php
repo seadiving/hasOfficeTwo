@@ -145,6 +145,21 @@ function error_field($title, array $errors) {
                <input name="titoli[minuti]" value="<?php echo $titoli->getDurataMin();?>" type="text" size="3" maxlength="3" id="titoli_durata_minuti" />'&nbsp;<input name="titoli[secondi]" value="<?php echo $titoli->getDurataSec();?>" type="text" size="2" maxlength="2"  id="titoli_durata_secondi" />''        
           </div> 
          <div class="field">
+            <label>Compositore</label>
+            <input type="text" name="titoli[compositore]" value="<?php echo Utils::escape($titoli->getCompositore()); ?>"
+                   class="text<?php echo error_field('compositore', $errors); ?>" />
+        </div>
+        <div class="field">    
+            <label>Genere</label>
+                <input type="text" name="titoli[genere]" value="<?php echo Utils::escape($titoli->getGenere()); ?>"
+                   class="text<?php echo error_field('genere', $errors); ?>" />
+        </div>
+        <div class="field">
+            <label>SubGenere</label>
+                <input type="text" name="titoli[subgenere]" value="<?php echo Utils::escape($titoli->getSubGenere()); ?>"
+                   class="text<?php echo error_field('subgenere', $errors); ?>" />
+        </div>
+         <div class="field">
             <label>Proprieta master</label>
             <input type="text" name="titoli[proprieta_master]" value="<?php echo Utils::escape($titoli->getProprietaMaster()); ?>"
                    class="text<?php echo error_field('proprieta_master', $errors); ?>" />
@@ -171,6 +186,11 @@ function error_field($title, array $errors) {
             <input type="text" name="titoli[prezzo_base]" value="<?php echo Utils::escape($titoli->getPrezzoBase()); ?>"
        class="text<?php echo error_field('prezzo_base', $errors); ?>" />
         </div>
+        <div class="field">
+            <label>Prezzo minimo</label>
+            <input type="text" name="titoli[prezzo_minimo]" value="<?php echo Utils::escape($titoli->getPrezzoMinimo()); ?>"
+       class="text<?php echo error_field('prezzo_minimo', $errors); ?>" />
+        </div>
          <div class="field">
             <label>Cantato</label>
                <select name="titoli[cantato]" class="inputselect ui-corner-all" id="titoli_cantato">
@@ -178,6 +198,10 @@ function error_field($title, array $errors) {
                 <option value="1" <?php if(1 == $titoli->getCantato()) echo "selected"?>>Yes</option>
                 <option value="0" <?php if(0 == $titoli->getCantato()) echo "selected"?>>No</option>
                 </select>
+        </div>
+        <div class="field">
+            <label>Testo Brano</label>
+            <textarea rows="4" cols="30" name="titoli[testo_brano]" class="inputTextarea ui-corner-all text<?php echo error_field('testo_brano', $errors); ?>" id="titoli_note"><?php echo Utils::escape($titoli->getTestoBrano()); ?></textarea>
         </div>
         <input type="hidden" name="id" value="<?php echo $titoli->getId(); ?>"/>
         
@@ -189,8 +213,10 @@ function error_field($title, array $errors) {
             $pageID = array_key_exists('pageID', $_GET)?$_GET['pageID']:"";
             $searchtitle = array_key_exists('searchTitle', $_GET)?$_GET['searchTitle']:"";
             $searchisrc = array_key_exists('searchIsrc', $_GET)?$_GET['searchIsrc']:"";
+            $searchfindfor = array_key_exists('searchFindFor', $_GET)?$_GET['searchFindFor']:"";
             $str="index.php?page=titoli/listTitoli".($pageID != ""?"&pageID=".$pageID:"").
                                                     ($searchtitle != ""?"&searchTitle=".$searchtitle:"").
+                                                    ($searchfindfor != ""?"&searchFindFor=".$searchfindfor:"").
                                                     ($searchisrc != ""?"&searchIsrc=".$searchisrc:""); ?> 
             <a href="<?php echo $str; ?>" > back </a>
         </div>

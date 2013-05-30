@@ -67,7 +67,7 @@ final class TitoliDao {
    }
     
        public function findById($id) {
-        $row = $this->query('SELECT * FROM titoli WHERE id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT titoli.* FROM titoli WHERE titoli.id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
@@ -131,8 +131,18 @@ final class TitoliDao {
         if ($search !== null) {
             if($search->getTitolo() !== null || $search->getIsrc() !== null || $search->getUtente() !== null)
                 $sql .=  'WHERE ';
-            if ($search->getTitolo() !== null) {
-                $sql .= ' brano like ' . $this->getDb()->quote('%'.$search->getTitoloUpper().'%');
+            if($search->getTitolo() !== null && $search->getTipoRicerca() !==null){
+                if($search->getTipoRicerca() == Utils::TIPO_RICERCA_INIZIA_PER){
+                    $sql .= ' brano like ' . $this->getDb()->quote($search->getTitoloUpper().'%'); 
+                }else if($search->getTipoRicerca() == Utils::TIPO_RICERCA_UGUALE_A){
+                    $sql .= ' brano = ' . trim($this->getDb()->quote($search->getTitoloUpper()));
+                }else if($search->getTipoRicerca() == Utils::TIPO_RICERCA_CONTIENE){
+                    $sql .= ' brano like ' . $this->getDb()->quote('%'.$search->getTitoloUpper().'%');
+                }
+            }else{    
+                if ($search->getTitolo() !== null) {
+                    $sql .= ' brano like ' . $this->getDb()->quote('%'.$search->getTitoloUpper().'%');
+                }
             }
             if($search->getIsrc() !== null){
                  if ($search->getTitolo() !== null)
@@ -155,7 +165,7 @@ final class TitoliDao {
         }
         $sql .= ' ORDER BY ' . $orderBy;
         //$sql .= 'LIMIT 50';
-       //echo "query list".$sql;
+        //echo "query list".$sql;
         return $sql;
     }
     /**
@@ -196,7 +206,12 @@ final class TitoliDao {
                 descrizione = :descrizione,
                 tipo_trattativa = :tipo_trattativa,
                 prezzo_base = :prezzo_base,
-                cantato = :cantato
+                cantato = :cantato,
+                compositore= :compositore,
+                genere = :genere,
+                subgenere = :subgenere,
+                prezzo_minimo = :prezzo_minimo,
+                testo_brano = :testo_brano
             WHERE
                 id = :id';
         return $this->execute($sql, $titoli);
@@ -236,7 +251,12 @@ final class TitoliDao {
             ':descrizione'=> $titoli->getDescrizione(),
             ':tipo_trattativa'=> $titoli->getTipoTrattativa(),
             ':prezzo_base'=> $titoli->getPrezzoBase(),
-            ':cantato'=> $titoli->getCantato()
+            ':cantato'=> $titoli->getCantato(),
+            ':compositore'=> $titoli->getCompositore(),
+            ':genere'=> $titoli->getGenere(),
+            ':subgenere'=> $titoli->getSubgenere(),
+            ':prezzo_minimo'=> $titoli->getPrezzoMinimo(),
+            ':testo_brano'=> $titoli->getTestoBrano()
         );
 
         return $params;
@@ -267,7 +287,7 @@ final class TitoliDao {
         // begin pager
         //require_once('Pager/Pager.php');
         //require_once('Pager/Sliding.php');
-        $extraVars = array('searchTitle'=>$search->getTitolo(),'searchIsrc'=>$search->getIsrc());
+        $extraVars = array('searchTitle'=>$search->getTitolo(),'searchIsrc'=>$search->getIsrc(),'searchFindFor'=>$search->getTipoRicerca());
         $params = array(
         'totalItems' => $stmt->rowCount(),
         'perPage' => 5,

@@ -5,6 +5,10 @@
  */
  final class Utils {
 
+    const TIPO_RICERCA_INIZIA_PER = "1";
+    const TIPO_RICERCA_UGUALE_A = "2";
+    const TIPO_RICERCA_CONTIENE = "3";
+    
     private function __construct() {
     }
 

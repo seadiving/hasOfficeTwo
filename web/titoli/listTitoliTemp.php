@@ -16,10 +16,15 @@ class listTitoli {
 
     <form action="index.php?page=titoli/listTitoli" method="post">
         <fieldset>
-            <label for="search-title">Titolo: </label>
-            <input name="search-title" id="search-title" type="text" value="<?php echo array_key_exists('searchTitle', $_REQUEST)?$_REQUEST['searchTitle']:""; ?>">
-            <label for="search-isrc">Isrc: </label>
-            <input name="search-isrc" id="search-isrc" type="text" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>"><br>
+            <label for="searchTitle">Titolo: </label>
+             <input name="searchTitle" id="search-title" type="text" value="<?php echo array_key_exists('searchTitle', $_REQUEST)?$_REQUEST['searchTitle']:""; ?>">
+             <select name="searchFindFor">
+                <option value="1" <?php echo array_key_exists('searchFindFor', $_REQUEST) &&  $_REQUEST['searchFindFor'] == "1"?"selected":""; ?> >inizia per</option>
+                <option value="2" <?php echo array_key_exists('searchFindFor', $_REQUEST) && $_REQUEST['searchFindFor'] == "2"?"selected":""; ?> >uguale a</option>
+                <option value="3" <?php echo array_key_exists('searchFindFor', $_REQUEST) && $_REQUEST['searchFindFor'] == "3"?"selected":""; ?> >contiene</option>
+            </select>
+            <label for="searchIsrc">Isrc: </label>
+            <input name="searchIsrc" id="search-isrc" type="text" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>"><br>
             <input id="search-button" value="Search" type="submit" class="button">
         </fieldset>
     </form>
@@ -79,7 +84,7 @@ class listTitoli {
                         echo array_key_exists('pageID', $_GET)?'&pageID='.$_GET['pageID']:"";
                         echo array_key_exists('searchTitle', $_REQUEST)?'&searchTitle='.$_REQUEST['searchTitle']:"";
                         echo array_key_exists('searchIsrc', $_REQUEST)?'&searchIsrc='.$_REQUEST['searchIsrc']:"";
-                        
+                        echo array_key_exists('searchFindFor', $_REQUEST)?'&searchFindFor='.$_REQUEST['searchFindFor']:"";
                         
                         ?>";
         });

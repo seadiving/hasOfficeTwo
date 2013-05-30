@@ -229,6 +229,8 @@ final class Titoli {
      */
     private $title_file_id;
     
+     private $testo_brano;
+    
     /**
      * Create new {@link Titoli} with default properties set.
      */
@@ -587,7 +589,25 @@ final class Titoli {
         if($this->getDurata()> 0)
             return $this->getDurata()%60;
     }
-
+    
+    public function getSubgenere(){
+        return $this->subgenere;
+    }
+    public function setSubgenere($subgenere){
+        $this->subgenere = $subgenere;
+    }
+    public function getPrezzoMinimo(){
+        return $this->prezzo_minimo;
+    }
+    public function setPrezzoMinimo($prezzominimo){
+        $this->prezzo_minimo = $prezzominimo;
+    }
+    public function getTestoBrano(){
+        return $this->testo_brano;
+    }
+    public function setTestoBrano($testo_brano){
+        $this->testo_brano = $testo_brano;
+    }
       /**
      * @return boolean
      */
