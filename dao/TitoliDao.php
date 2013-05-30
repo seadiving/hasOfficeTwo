@@ -46,6 +46,25 @@ final class TitoliDao {
       
         return $result;
     }
+
+    public function findLabels(TitoliSearchCriteria $search = null){
+         $result = array();
+         $stmt = $this->query($this->getfindLabelsSql($search));
+         foreach ($stmt as $row) {
+            $etichetta = new Etichetta();
+            if (array_key_exists('id', $row)) {
+                $etichetta->setId($row['id']);
+            }
+            if (array_key_exists('code', $row)) {
+                $etichetta->setCodice($row['code']);
+            }
+            if (array_key_exists('name', $row)) {
+                $etichetta->setNome($row['name']);
+            }
+            $result[$etichetta->getId()]= $etichetta;
+        }
+        return $result;
+   }
     
        public function findById($id) {
         $row = $this->query('SELECT * FROM titoli WHERE id = ' . (int) $id)->fetch();
@@ -102,27 +121,43 @@ final class TitoliDao {
         return $this->db;
     }
 
-    private function getFindSql(TitoliSearchCriteria $search = null) {
-        $sql = 'SELECT * FROM titoli ';
+     private function getFindSql(TitoliSearchCriteria $search = null) {
+        $sql = 'SELECT  titoli.* FROM titoli ';
+        if($search->getUtente() !== null){
+            $sql .= ' inner join produzioni_casa on titoli.produzioni_casa = produzioni_casa.code ';
+            $sql .= ' inner join publisher on produzioni_casa.publisher_id = publisher.id ';
+        }
         $orderBy = ' brano ';
         if ($search !== null) {
-            if($search->getTitolo() !== null || $search->getIsrc() !== null)
+            if($search->getTitolo() !== null || $search->getIsrc() !== null || $search->getUtente() !== null)
                 $sql .=  'WHERE ';
             if ($search->getTitolo() !== null) {
-                $sql .= ' brano like ' . $this->getDb()->quote('%'.$search->getTitolo().'%');
+                $sql .= ' brano like ' . $this->getDb()->quote('%'.$search->getTitoloUpper().'%');
             }
             if($search->getIsrc() !== null){
                  if ($search->getTitolo() !== null)
                      $sql .= ' AND '; 
                 $sql .=' ISRC = '. $this->getDb()->quote(Utils::getFormatISRC($search->getIsrc()));
             }
+
+            if($search->getUtente() !== null){
+                if ($search->getTitolo() !== null || $search->getIsrc() !== null){
+                    $sql .= ' AND ';
+                    foreach($search->getUtente()->getPermessi() as $permesso){
+                        if($permesso->getPublisher() !== null){
+                            $sql .=' publisher.code = '.$this->getDb()->quote($permesso->getPublisher());
+                        }else{
+                            $sql .=' produzioni_casa.code = '.$this->getDb()->quote($permesso->getProduzioneCasa());
+                        }
+                    }
+                }
+            }
         }
         $sql .= ' ORDER BY ' . $orderBy;
         //$sql .= 'LIMIT 50';
-        //echo "query list".$sql;
+       //echo "query list".$sql;
         return $sql;
     }
-
     /**
      * @return Todo
      * @throws Exception
@@ -224,24 +259,22 @@ final class TitoliDao {
         return $statement;
     }
     
-    private function getFindPaged(TitoliSearchCriteria $search = null){
+   private function getFindPaged(TitoliSearchCriteria $search = null){
         /* inizio esempio paginazione*/
         $stmt = $this->query($this->getFindSql($search));
         $stmt2 = null;
         if ($stmt){
         // begin pager
-        //echo 'paperinoooooooooooooooooooooooooooooo';
         //require_once('Pager/Pager.php');
-          //echo 'lillo';
         //require_once('Pager/Sliding.php');
-        //echo 'lallo';
-        //echo 'paperino';
+        $extraVars = array('searchTitle'=>$search->getTitolo(),'searchIsrc'=>$search->getIsrc());
         $params = array(
         'totalItems' => $stmt->rowCount(),
-        'perPage' => 5,
+        'perPage' => 10,
         'delta' => 8,
         'mode' => 'Jumping',
-		'separator' => '|'
+        'separator' => '|',
+        'extraVars' => $extraVars
         );
         //echo 'paperino';
         $pager =& Pager::factory($params);
@@ -258,7 +291,6 @@ final class TitoliDao {
         }else{
         // 2nd query based on 1st with LIMIT – this will be displaying data per page
             $stmt2 = $this->getDb()->prepare($this->getFindSql($search).' LIMIT :from, :perPage');
-
             // address bug 44639 – forces the variables to have the property of integer instead of string so no quotes will surround it
             $stmt2->bindValue(':from', $from, PDO::PARAM_INT);
             $stmt2->bindValue(':perPage', $perPage, PDO::PARAM_INT);
@@ -267,10 +299,26 @@ final class TitoliDao {
       }
         return $stmt2;
 
-        /* fine esempio paginazione*/ 
-
     }
 
+    private function getfindLabelsSql(TitoliSearchCriteria $search = null){
+        $sql = 'SELECT produzioni_casa.* FROM  produzioni_casa inner join publisher on produzioni_casa.publisher_id = publisher.id ';
+       if($search->getUtente() !== null){
+            if ($search->getTitolo() !== null || $search->getIsrc() !== null){
+                $sql .= ' WHERE ';
+                foreach($search->getUtente()->getPermessi() as $permesso){
+                    if($permesso->getPublisher() !== null){
+                        $sql .=' publisher.code = '.$this->getDb()->quote($permesso->getPublisher());
+                    }else{
+                        $sql .=' produzioni_casa.code = '.$this->getDb()->quote($permesso->getProduzioneCasa());
+                    }
+                }
+            }
+        }
+        //echo 'query etichette '.$sql;
+        return $sql;
+                
+    }
     private static function throwDbError(array $errorInfo) {
         // TODO log error, send email, etc.
         throw new Exception('DB error [' . $errorInfo[0] . ', ' . $errorInfo[1] . ']: ' . $errorInfo[2]);
