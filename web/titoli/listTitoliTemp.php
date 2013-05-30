@@ -24,11 +24,11 @@ class listTitoli {
         </fieldset>
     </form>
 </div>
-
-
       
      
             
+			
+                        
 			<div></div>
 			<div>
                 <table cellpadding=5 cellspacing=5 style="width: 380px;position:relative; left:15px; " class="ui-jqgrid-btable" aria-labelledby="gbox_results_grid" aria-multiselectable="false" role="grid" id="results_grid" border="0" cellpadding="0" cellspacing="0" >

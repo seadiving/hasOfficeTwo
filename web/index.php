@@ -1,5 +1,6 @@
 <?php
 //set_include_path('.:/opt/local/share/pear/'); 
+
 final class Index {
 
     const DEFAULT_PAGE = 'login/login';
@@ -76,6 +77,7 @@ final class Index {
             'Pager_Sliding' => '../Pager/Sliding.php',
             'Pager_Jumping' => '../Pager/Jumping.php',
             'Pager' => '../Pager/Pager.php'
+			
         );
         if (!array_key_exists($name, $classes)) {
             die('Class "' . $name . '" not found.');
