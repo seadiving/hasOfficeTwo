@@ -77,11 +77,6 @@
         return $_POST[$name];
     }
 
-    /**
-     * Get {@link Todo} by the identifier 'id' found in the URL.
-     * @return Todo {@link Todo} instance
-     * @throws NotFoundException if the param or {@link Todo} instance is not found
-     */
     public static function getTitoloByGetId() {
         $id = null;
         try {
@@ -99,7 +94,17 @@
         }
         return $titoli;
     }
+
     
+        public static function getLabels() {
+            $dao = new TitoliDao();
+            $etichette = $dao->findLabels(new TitoliSearchCriteria());
+            if ($etichette === null) {
+                throw new Exception('Unknown Etichette identifier provided.');
+            }
+        return $etichette;
+    }
+
         public static function getUser() {
         $username = null;
         $password = null;

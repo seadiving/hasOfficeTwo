@@ -6,8 +6,8 @@ const RUOLO_MANAGE = 'MANAGE';
 const RUOLO_PUBLISHER_MANAGE = 'PUBLISHER_MANAGE';
 
 private $ruolo;
-private $produzione_casa;
-private $publisher;
+private $produzione_casa = null;
+private $publisher = null;
 
 public function __construct() {
 

@@ -130,14 +130,10 @@ function error_field($title, array $errors) {
         <div class="field">    
             <label>Produzioni casa</label>
             <select name="titoli[sProduzioniCasa]">
-                <option value="1-CINEVOX" <?php if(1 == $titoli->getProduzioniCasaId()) echo "selected"?>>CINEVOX</option>
-                <option value="2-ALTRO" <?php if(2 == $titoli->getProduzioniCasaId()) echo "selected"?>>ALTRO</option>
-                <option value="3-MUSIKSTRASSE" <?php if(3 == $titoli->getProduzioniCasaId()) echo "selected"?>>MUSIKSTRASSE</option>
-                <option value="4-BUBBLE_RECORDS" <?php if(4 == $titoli->getProduzioniCasaId()) echo "selected"?>>BUBBLE RECORDS</option>
-                <option value="5-RICORDI">RICORDI <?php if(5 == $titoli->getProduzioniCasaId()) echo "selected"?></option>
-                <option value="6-BIXIO_CEMSA">BIXIO CEMSA <?php if(6 == $titoli->getProduzioniCasaId()) echo "selected"?></option>
-                <option value="10-IMPERFECT">IMPERFECT RECORDS <?php if(10 == $titoli->getProduzioniCasaId()) echo "selected"?></option>
-            </select>
+                <?php foreach($etichette as $etichetta){?>
+                    <option value="<?php echo $etichetta->getId()?>-<?php echo $etichetta->getCodice()?>" <?php if($etichetta->getId() == $titoli->getProduzioniCasaId()) echo "selected"?>><?php echo $etichetta->getNome()?></option>
+                <?php }?>
+             </select>
         </div>
         <div class="field">
             <label>Version</label>
@@ -189,6 +185,14 @@ function error_field($title, array $errors) {
         <div class="wrapper">
             <!--<input type="submit" name="cancel" value="CANCEL" class="submit" />-->
             <input type="submit" name="save" value="SALVA" class="submit" />
+            <?php 
+            $pageID = array_key_exists('pageID', $_GET)?$_GET['pageID']:"";
+            $searchtitle = array_key_exists('searchTitle', $_GET)?$_GET['searchTitle']:"";
+            $searchisrc = array_key_exists('searchIsrc', $_GET)?$_GET['searchIsrc']:"";
+            $str="index.php?page=titoli/listTitoli".($pageID != ""?"&pageID=".$pageID:"").
+                                                    ($searchtitle != ""?"&searchTitle=".$searchtitle:"").
+                                                    ($searchisrc != ""?"&searchIsrc=".$searchisrc:""); ?> 
+            <a href="<?php echo $str; ?>" > back </a>
         </div>
     </fieldset>
 </form>

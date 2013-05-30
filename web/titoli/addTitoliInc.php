@@ -1,9 +1,10 @@
 <?php
 
 require_once '../util/SessionManage.php';
-
 $errors = array();
 $titoli = null;
+//recupero la combo delle etichette
+$etichette = Utils::getLabels();
 $edit = array_key_exists('id', $_GET);
 if ($edit) {
     $titoli = Utils::getTitoloByGetId();
@@ -23,7 +24,6 @@ if (array_key_exists('cancel', $_POST)) {
         'autore' => $_POST['titoli']['autore'],
         'editore' => $_POST['titoli']['editore'],
         'esecutore'=> $_POST['titoli']['esecutore'],
-        'artista' => $_POST['titoli']['esecutore'],
         'anno' => $_POST['titoli']['anno'],
         'ISRC' => $_POST['titoli']['ISRC'],
         'Sproduzioni_casa' => $_POST['titoli']['sProduzioniCasa'],
