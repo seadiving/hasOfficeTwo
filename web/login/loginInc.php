@@ -1,5 +1,8 @@
 <?php
 
+if(!isset($_REQUEST['lang']))
+    $_REQUEST['lang'] = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
 //session_start();
 if(array_key_exists('action', $_GET) && $_GET['action'] == 'logout'){
     unset($_SESSION['user']);
@@ -40,5 +43,5 @@ if(!$exit){
 }
 
 if(isset($_SESSION['user']))
- Utils::redirect('index.php', array('page' => 'titoli/listTitoli'));
+ Utils::redirect('index.php', array('lang' => $_REQUEST['lang'],'page' => 'titoli/listTitoli'));
 ?>

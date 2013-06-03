@@ -25,7 +25,7 @@ class listTitoli {
             </select>
             <label for="searchIsrc">Isrc: </label>
             <input name="searchIsrc" id="search-isrc" type="text" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>"><br>
-            <input id="search-button" value="Search" type="submit" class="button">
+            <input id="search-button" value="<?php echo $cerca?>" type="submit" class="button">
         </fieldset>
     </form>
 </div>
@@ -79,7 +79,7 @@ class listTitoli {
         });
        jQuery(".ui-jqgrid-btable .ui-widget-content").click(function() {
    
-        window.location.href = "index.php?page=titoli/addTitoli&id="+jQuery(this).attr('id')+
+        window.location.href = "index.php?page=titoli/addTitoli&lang=<?php echo $_REQUEST['lang']?>&id="+jQuery(this).attr('id')+
                         "<?php 
                         echo array_key_exists('pageID', $_GET)?'&pageID='.$_GET['pageID']:"";
                         echo array_key_exists('searchTitle', $_REQUEST)?'&searchTitle='.$_REQUEST['searchTitle']:"";

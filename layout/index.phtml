@@ -1,10 +1,10 @@
 <?php
-include("../lang/messages.php");
+include_once("../lang/messages.php");
 
-include ("../lang/lang.php");
+include_once("../lang/lang.php");
 ?>
 <!DOCTYPE HTML>
-<html xml:ns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xml:ns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang?>" lang="<?php echo $lang?>">
     <head>
  
   <title>list Titoli</title>
@@ -16,11 +16,13 @@ include ("../lang/lang.php");
 		<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>-->
 		<link type="text/css" rel="stylesheet" href="css/main.css"/>
+               <link type="text/css"  rel="stylesheet" href="css/jquery-ui.css" />
   
 
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
    <script type="text/javascript" src="js/skel.min.js"></script>
     <script type="text/javascript" src="js/html5shiv.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
     
 <style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
@@ -58,8 +60,8 @@ include ("../lang/lang.php");
 				<nav id="nav">
 				<ul>
 				<?php if(isset($_SESSION['user'])){?>		
-				<li><a href="index.php?page=titoli/listTitoli&lang=<?php echo $lang; ?>" class=button>gestione titoli</a></li>
-				<li> <a  href="index.php?action=logout&lang=<?php echo $lang; ?>" class=button>logout</a></li>
+				<li><a href="index.php?page=titoli/listTitoli&lang=<?php echo $lang?>" class=button>gestione titoli</a></li>
+				<li> <a  href="index.php?action=logout&lang=<?php echo $lang?>" class=button>logout</a></li>
 				<?php }?>
 				</ul>
 				</nav>

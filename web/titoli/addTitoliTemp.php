@@ -1,5 +1,5 @@
 <?php
-//require_once 'addTitoliInc.php';
+require_once '../json/Generi.php';
 
 function error_field($title, array $errors) {
     foreach ($errors as $error) {
@@ -149,14 +149,14 @@ function error_field($title, array $errors) {
             <input type="text" name="titoli[compositore]" value="<?php echo Utils::escape($titoli->getCompositore()); ?>"
                    class="text<?php echo error_field('compositore', $errors); ?>" />
         </div>
-        <div class="field">    
+        <div class="field ui-widget">    
             <label>Genere</label>
-                <input type="text" name="titoli[genere]" value="<?php echo Utils::escape($titoli->getGenere()); ?>"
+                <input type="text" id="genere" name="titoli[genere]" value="<?php echo Utils::escape($titoli->getGenere()); ?>"
                    class="text<?php echo error_field('genere', $errors); ?>" />
         </div>
-        <div class="field">
+        <div class="field ui-widget">
             <label>SubGenere</label>
-                <input type="text" name="titoli[subgenere]" value="<?php echo Utils::escape($titoli->getSubGenere()); ?>"
+                <input type="text" id="subgenere" name="titoli[subgenere]" value="<?php echo Utils::escape($titoli->getSubGenere()); ?>"
                    class="text<?php echo error_field('subgenere', $errors); ?>" />
         </div>
          <div class="field">
@@ -166,7 +166,7 @@ function error_field($title, array $errors) {
         </div>
         <div class="field">
             <label>Descrizione</label>
-            <textarea rows="4" cols="30" name="titoli[descrizione]" class="inputTextarea ui-corner-all text<?php echo error_field('descrizione', $errors); ?>" id="titoli_note"><?php echo Utils::escape($titoli->getDescrizione()); ?></textarea>
+            <textarea rows="4" cols="30" name="titoli[descrizione]" class="inputTextarea ui-corner-all text<?php echo error_field('descrizione', $errors); ?>" id="titoli_descrizione"><?php echo Utils::escape($titoli->getDescrizione()); ?></textarea>
         </div>     
 
         <div class="field">
@@ -201,7 +201,7 @@ function error_field($title, array $errors) {
         </div>
         <div class="field">
             <label>Testo Brano</label>
-            <textarea rows="4" cols="30" name="titoli[testo_brano]" class="inputTextarea ui-corner-all text<?php echo error_field('testo_brano', $errors); ?>" id="titoli_note"><?php echo Utils::escape($titoli->getTestoBrano()); ?></textarea>
+            <textarea rows="4" cols="30" name="titoli[testo_brano]" class="inputTextarea ui-corner-all text<?php echo error_field('testo_brano', $errors); ?>" id="titoli_testo_brano"><?php echo Utils::escape($titoli->getTestoBrano()); ?></textarea>
         </div>
         <input type="hidden" name="id" value="<?php echo $titoli->getId(); ?>"/>
         
@@ -214,14 +214,42 @@ function error_field($title, array $errors) {
             $searchtitle = array_key_exists('searchTitle', $_GET)?$_GET['searchTitle']:"";
             $searchisrc = array_key_exists('searchIsrc', $_GET)?$_GET['searchIsrc']:"";
             $searchfindfor = array_key_exists('searchFindFor', $_GET)?$_GET['searchFindFor']:"";
-            $str="index.php?page=titoli/listTitoli".($pageID != ""?"&pageID=".$pageID:"").
+            $str="index.php?page=titoli/listTitoli".(isset($_REQUEST['lang']) && $_REQUEST['lang'] != ""?"&lang=".$_REQUEST['lang']:"").
+                                                    ($pageID != ""?"&pageID=".$pageID:"").
                                                     ($searchtitle != ""?"&searchTitle=".$searchtitle:"").
                                                     ($searchfindfor != ""?"&searchFindFor=".$searchfindfor:"").
                                                     ($searchisrc != ""?"&searchIsrc=".$searchisrc:""); ?> 
-            <a href="<?php echo $str; ?>" > back </a>
+            <a href="<?php echo $str; ?>" > <?php echo $back?> </a>
         </div>
     </fieldset>
 </form>
+ <script>
+      jQuery(document).ready(function(){
+        $(function() {
+         var availableTags = [
+         <?php 
+        $variab = 0;
+        $count = count($generi_value);
+        foreach($generi_value as $genereVal){ ?>
+           "<?php echo $genereVal ?>",
+           <?php } ?>
+        ];
+        $( "#genere" ).autocomplete({
+        source: availableTags
+        });
+        $( "#subgenere" ).autocomplete({
+        source: availableTags
+        });
+        });
+        //alert(jQuery('#titoli_cantato').val());
+        if(jQuery('#titoli_cantato').val() == '0'){
+            jQuery('#titoli_testo_brano').parent().css("display","none");
+        }
+        jQuery('#titoli_cantato').change(function(){
+          jQuery('#titoli_testo_brano').parent().toggle("slow","swing");
+        });
+   });
+</script>
 <!--
   </div>
    <div id="bottom-torn"></div>

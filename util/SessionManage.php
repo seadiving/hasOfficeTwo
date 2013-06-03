@@ -14,15 +14,15 @@ class SessionManage {
     private $utente;
 
     public function __construct() {
-       if(!isset($_SESSION['user'])){
+       if($_SESSION != null && !isset($_SESSION['user'])){
            session_start();
        }
     }
     
     public function checkUtente(){
-        if(!isset($_SESSION['user'])){
+        if($_SESSION != null && !isset($_SESSION['user'])){
             session_destroy();
-            header('Location: index.php?page=login/login');
+            header('Location: index.php?page=login/login&lang='.$_REQUEST['lang']);
         }
     }
     

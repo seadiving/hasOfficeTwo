@@ -41,7 +41,8 @@ final class GeneriDao {
 
      private function getFindSql(GeneriSearchCriteria $search = null) {
         $sql = 'SELECT * FROM generi';
-        //$sql .= 'WHERE MATCH(genere) AGAINST('".$search->get."*' ';
+        if($search != null && strlen($search->getGenere()) > 0)
+            $sql .= 'WHERE MATCH(genere) AGAINST('.$this->db->quote($search->getGenere()."%") ;
         $orderBy = ' genere ';
         $sql .= ' ORDER BY ' . $orderBy;
         return $sql;

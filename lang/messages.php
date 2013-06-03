@@ -4,9 +4,10 @@ date_default_timezone_set('Europe/Rome');
 
 setlocale(LC_ALL, 'en');
 
+if(!isset($_REQUEST['lang']))
+    $_REQUEST['lang'] = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
-$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-//$lang = "en_EN";
+$lang = $_REQUEST['lang'];
 
 
 
@@ -24,7 +25,7 @@ if (!isset($lang) or ($lang == "it")) {
 
 
 if ($lang == "en") {
-$yes = "si";
+        $yes = "si";
 	$no = "no";
 	$back = "back";
 	$cerca = "search";

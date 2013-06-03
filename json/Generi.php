@@ -1,34 +1,33 @@
 <?php
-$return_arr = array();
-
-//dati di accesso a mysql e al db
-$dbhost = 'YOUR_SERVER';
-$dbuser = 'YOUR_USERNAME';
-$dbpass = 'YOUR_PASSWORD';
-$dbname = 'YOUR_DATABASE_NAME';
-
-//definisco la variabile di ricerca dell'utente
-$term = $_GET("term");
-
-//connessione al a mysql
-$conn = mysql_connect($dbhost, $dbuser, $dbpass)
-or die ('Impossibile connettersi a Mysql');
-//selezione ddb
-mysql_select_db($dbname);
-//se connesso
-if ($conn)
-{
-//query select
-$fetch = mysql_query("SELECT * FROM tags WHERE MATCH(tagName) AGAINST('".$term."*')");
-//loop dei dati
-while ($row = mysql_fetch_array($fetch, MYSQL_ASSOC)) {
-$row_array['value'] = $row['tagName '];
-array_push($return_arr,$row_array);
+ $generi_value = array();
+ 
+ $generiSearch = new GeneriSearchCriteria();
+ 
+if(!isset($_SESSION['generi']) || isset($_SESSION['generi_lang']) && $_SESSION['generi_lang'] != $generiSearch->getLang()){
+   
+    //definisco la variabile di ricerca dell'utente
+    //$genere = $_GET("genere");
+    //$generiSearch->setGenere($genere);
+    $dao =  new GeneriDao();
+    $result = $dao->find(new GeneriSearchCriteria());
+    //loop dei dati
+    foreach ($result as $genereRes){
+        //$row_array['value'] = 
+        if($generiSearch->getLang() == 'it'){
+            array_push($generi_value,$genereRes->getGenere());
+        }else{
+           array_push($generi_value,$genereRes->getGenereEng()); 
+        }
+    }
+    if(count($generi_value)>0){
+       $_SESSION['generi'] =  $generi_value;
+       $_SESSION['generi_lang'] = $_REQUEST['lang'];
+       
+    }
 }
 
-}
-//chiudo la connessione a mysql
-mysql_close($conn);
+ $generi_value =  $_SESSION['generi'];
+ //echo $generi_value[0]["value"];
 //restituisco l'array in formato json
-echo json_encode($return_arr);
+//echo json_encode($return_arr);
 ?>
