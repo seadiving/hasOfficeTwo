@@ -1,13 +1,7 @@
 <?php
-/*
-require_once '../../util/Utils.php';
-require_once '../../model/Permesso.php';
-require_once '../../model/Utente.php';
-require_once '../../dao/UserDao.php';
-require_once '../../validation/TitoliValidator.php';
-require_once '../../dao/UserSearchCriteria.php';
-require_once '../../flash/Flash.php';
- * */
+
+if(!isset($_REQUEST['lang']))
+    $_REQUEST['lang'] = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
 //session_start();
 if(array_key_exists('action', $_GET) && $_GET['action'] == 'logout'){
@@ -49,5 +43,5 @@ if(!$exit){
 }
 
 if(isset($_SESSION['user']))
- Utils::redirect('index.php', array('page' => 'titoli/listTitoli'));
+ Utils::redirect('index.php', array('lang' => $_REQUEST['lang'],'page' => 'titoli/listTitoli'));
 ?>

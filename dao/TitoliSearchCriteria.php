@@ -6,7 +6,8 @@ final class TitoliSearchCriteria {
     private $isrc = null;
     private $paging = true;
     private $utente = null;
-
+    private $tipoRicerca = null;
+    
     public function __construct() {
        if(isset($_SESSION['user'])){
            $this->utente = $_SESSION['user'];
@@ -49,6 +50,14 @@ final class TitoliSearchCriteria {
 
      public function setUtente($utente) {
         $this->utente = $utente;
+        return $this;
+    } 
+     public function getTipoRicerca() {
+        return $this->tipoRicerca;
+    }
+
+     public function setTipoRicerca($tipoRicerca) {
+        $this->tipoRicerca = $tipoRicerca;
         return $this;
     } 
 }

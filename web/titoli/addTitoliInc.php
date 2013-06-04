@@ -36,6 +36,11 @@ if (array_key_exists('cancel', $_POST)) {
         'prezzo_base' => $_POST['titoli']['prezzo_base'],
         'cantato' => $_POST['titoli']['cantato'],
         'ID' => $_POST['id'],
+        'compositore'=> $_POST['titoli']['compositore'],
+        'genere'=> $_POST['titoli']['genere'],
+        'subgenere'=> $_POST['titoli']['subgenere'],
+        'prezzo_minimo'=> $_POST['titoli']['prezzo_minimo'],
+        'testo_brano'=> $_POST['titoli']['testo_brano']
     );
         ;
     // map

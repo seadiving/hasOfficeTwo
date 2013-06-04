@@ -3,6 +3,7 @@
 
 final class Index {
 
+    const LANG = 'lang=';
     const DEFAULT_PAGE = 'login/login';
     const LAYOUT_DIR = '../layout/';
 
@@ -63,12 +64,16 @@ final class Index {
             'Flash' => '../flash/Flash.php',
             'NotFoundException' => '../exception/NotFoundException.php',
             'TitoliDao' => '../dao/TitoliDao.php',
+            'GeneriDao' => '../dao/GeneriDao.php',
             'UserDao' => '../dao/UserDao.php',
             'TitoliMapper' => '../mapping/TitoliMapper.php',
+            'GeneriMapper' => '../mapping/GeneriMapper.php',
             'Titoli' => '../model/Titoli.php',
             'Utente' => '../model/Utente.php',
             'Permesso' => '../model/Permesso.php',
             'Etichetta' => '../model/Etichetta.php',
+            'Generi' =>  '../model/Generi.php',
+            'GeneriSearchCriteria' => '../dao/GeneriSearchCriteria.php',
             'TitoliSearchCriteria' => '../dao/TitoliSearchCriteria.php',
             'UserSearchCriteria' => '../dao/UserSearchCriteria.php',
             'TitoliValidator' => '../validation/TitoliValidator.php',
