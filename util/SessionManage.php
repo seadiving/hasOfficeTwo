@@ -15,6 +15,7 @@ class SessionManage {
 
     public function __construct() {
        if(!isset($_SESSION['user'])){
+		   
            session_start();
        }
     }

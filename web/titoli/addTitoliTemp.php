@@ -12,75 +12,13 @@ function error_field($title, array $errors) {
 }
 
 ?>
-<!--
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:ns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
-    <head>
- 
-  <title>list Titoli</title>
-  <link rel="shortcut icon" href="/favicon.ico"/>
-  <link type="text/css" rel="stylesheet" href="../../web/css/main.css"/>
-<style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
-
-</style>
-</head>
-<body>
-<div id="container">
-<div class="subHeader">
- 
-<div class="claim">
-<span class="logo">
-    <a href="http://www.haveasync.com/">
-    <img src="../img/logoSenza.png"/>
-    </a>
-</span>
-<span class="musiclic">Music Licensing</span>
-</div>
-<div class="linguetta">
-    <table border="0">
-    <tbody>
-    <tr>
-    <td valign="top">
-    <a class="login-opener" href="/it/login">login</a>
-    </td>
-    <td valign="top">
-    <a class="login-opener" href="/it/login">
-    <img width="30" src="../img/login.png"/>
-    </a>
-    </td>
-    </tr>
-    </tbody>
-    </table>
-</div>
-</div>
-
-  <div id="menustatico">
-
-
-    <ul id="nav" class="sf-menu sf-js-enabled sf-shadow">
-        <li class="current-menu-item">
-            <a href="listTitoliTemp.php">Gestione titoli</a>
-        </li>
-        <li class="current-menu-item">
-            <a href="listTitoliTemp.php">Gestione ordini</a>
-        </li>
-        <li class="current-menu-item">
-            <a href="listTitoliTemp.php">Gestione utenti</a>
-        </li>
-    </ul>
- 
-  <div id="top-torn"></div>  
-
-  <div id="centro">
--->
-
 <!--<p>
     <a href="/haveasync/web/backend_dev.php/it/titles/downloadexcel">Download as Excel</a>
 </p>-->
 <h1>
     
     <?//php if ($edit): ?>
-        Titolo
+       Modifica
     <?//php else: ?>
         <!--Add new TITOLO-->
     <?//php endif; ?>

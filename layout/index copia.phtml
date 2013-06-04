@@ -1,0 +1,265 @@
+<?php
+//include("../lang/messages.php");
+//include ("../lang/lang.php");
+?>
+<!doctype html>
+<!-- HTML5 Boilerplate -->
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"><!--<![endif]-->
+	<head>
+					<meta charset="utf-8">
+			<title>HAS</title>
+
+			<!-- How viewports work: http://t.co/dKP3o1e -->
+			<meta name="HandheldFriendly" content="True">
+			<meta name="MobileOptimized" content="320">
+			<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0">
+
+			<!-- Windows/IE font smoothing -->
+			<meta http-equiv="cleartype" content="on">
+			<!-- Use latest IE randering angine and switch on chrome Frame if available -->
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+			<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700|Syncopate:400,700' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" type="text/css" href="css/style.css">
+			<!--<link type="text/css" rel="stylesheet" href="css/main.css"/>-->
+		    <link rel="shortcut icon" href="favicon.ico" />
+		    <link rel="apple-touch-icon-precomposed" href="img/base/apple-touch-icon-57x57-precomposed.png" />
+		    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/base/apple-touch-icon-72x72-precomposed.png" />
+		    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/base/apple-touch-icon-114x114-precomposed.png" />
+			<!-- Ability Sniffing -->
+			<script src="js/libs/modernizr.custom.js"></script>
+
+			<!--[if (IE 7)]>
+				<link rel="stylesheet" href="css/fallback/icons-ie7.css">
+			<![endif]-->
+<script type="text/javascript">
+		<!--
+		function clearDefault(el) {
+		if (el.defaultValue==el.value) el.value = ""
+		}
+		// -->
+		</script>
+
+			</head>
+
+	<body  class="open-menu">
+
+		<nav role="navigation">
+
+					 <?php if(isset($_SESSION['user'])){?>	
+					 	<ul id="navmenu">
+				    <li><a href="/" class="nav-home current" data-canxfilter=""><i class="menu-icon icon-has"></i></a></li>
+    <li><a href="/#studio" data-filter=".studio"><i class="menu-icon icon-studio"></i><span>Coffe</span></a></li>
+    <li><a href="/#team" data-filter=".team"><i class="menu-icon icon-team"></i><span>Milk</span></a></li>
+    <li><a href="/#projects" data-filter=".projects"><i class="menu-icon icon-work"></i><span>Sugar</span></a></li>
+    <li><a href="/#ethos" data-filter=".ethos"><i class="menu-icon icon-ethos"></i><span>Profile</span></a></li>
+   	<li><a href="index.php?page=titoli/listTitoli&lang=<?php echo $lang; ?>" ><i class="menu-icon icon-studio"></i><span>Titles</span></a></li>
+	<li><a  href="index.php?action=logout&lang=<?php echo $lang; ?>"><i class="menu-icon icon-studio"></i><span>Logout</span></a></li>
+				
+			</ul>
+			<?php }?>
+		<div class="claim">
+		<a href="http://manage.haveasync.com">
+		<span class="have">have</span>
+		<span class="havea">a</Span>
+		<span class="haveasync">sync</span>
+		</a>
+		<span class="logo"><a href="http://manage.haveasync.com/"><img src="http://www.haveasync.com/images/logoSenza.png"></a></span>
+		<span class="musiclic">music licensing</span>
+		</div>
+			
+			
+		<a href="#contact" id="nav-contact"><i class="menu-icon icon-contact"></i><span>Contact</span></a>
+
+			
+		</nav>
+
+		<section role="main">
+			    <div class="grid-wrap shuffle grid-home">
+
+        <div id="logo-block" class="block-wrap ignore-shuffle" data-rowspan="1" data-colspan="1">
+            <hgroup class="block text-only">
+                <h1>Hi, we&rsquo;re Haveasync</h1>
+                
+            </hgroup>
+        </div>
+
+        <header id="intro" class="block-wrap ignore-shuffle" data-rowspan="2" data-colspan="2">
+            <hgroup class="block text-only">
+                 <?php if ($flashes): ?>
+					                            <ul id="flashes">
+					                            <?php foreach ($flashes as $flash): ?>
+					                                <li><?php echo $flash; ?></li>
+					                            <?php endforeach; ?>
+					                            </ul>
+					                        <?php endif; ?>
+
+					                        <?php require $template; ?>
+            </hgroup>
+        </header>
+
+        <section id="studio" class="studio">
+
+            <header class="block-wrap" data-rowspan="2" data-colspan="2">
+                <hgroup class="block text-only">
+                    <h1>Our studio</h1>
+                    <h2>We&rsquo;ve created an environment that <em>fosters enthusiasm</em> and lets everyone work to their full potential.</h2>
+                </hgroup>
+            </header>
+            
+            
+            
+            
+            
+            
+            
+        </section>
+        
+        <!--/#studio-->
+
+        <section class="team" id="team">
+
+            <header class="block-wrap" data-rowspan="2" data-colspan="2">
+                <hgroup class="block text-only">
+                    <h1>Our team</h1>
+                    <h2><em>5</em> Designers, <em>2</em> Developers, and <em>1</em> person counting the pennies.</h2>
+                </hgroup>
+            </header>
+
+            <ul>
+             <li class="block-wrap" data-rowspan="1" data-colspan="1">
+                        <figure class="block team-block">
+                            <a class="link-block" href="team/andy">
+                                <img class="resize" src="img/base/spacer.png" rel="imgteam/andy.jpg" alt="Andy Shield" />
+                                <noscript><img src="imgteam/andy.jpg" alt="Andy Shield" /></noscript>
+                            </a>
+                            <h3><a href="team/andy">Andy Shield</a></h3>
+                            <p>Managing Director</p>
+                        </figure>
+                    </li>
+                                   
+                            </ul>
+
+        </section>
+        
+        <!--/#team-->
+
+        <section class="projects" id="projects">
+
+            <header class="block-wrap" data-rowspan="2" data-colspan="2">
+                <hgroup class="block text-only">
+                    <h1>What we do</h1>
+                    <h2>Like <em>craftsmen</em>, we care about what we do. Each pixel refined, every line of code considered.</h2>
+                </hgroup>
+            </header>
+
+            <ul>
+
+                <li class="block-wrap" data-rowspan="1" data-colspan="1">
+                    <div class="block text-only">
+                        <h3><b>App Development</b></h3>
+                        <p>We design &amp; build apps for the Web, iOS and Android.</p>
+                    </div>
+                </li>
+
+                
+               
+
+            </ul>
+
+           
+        </section><!--/#What-->
+
+        <section class="ethos" id="ethos">
+
+            <header class="block-wrap" data-rowspan="2" data-colspan="2">
+                <hgroup class="block text-only">
+                    <h1>How we work</h1>
+                    <h2>We want to make a difference - create things that <em>change</em> peoples lives.</h2>
+                </hgroup>
+            </header>
+
+            <ul>
+
+                <li class="block-wrap" data-rowspan="1" data-colspan="1">
+                    <div class="block text-only">
+                        <h3>We move fast - working in short <em>instinctive</em> sprints, validating our decisions along the way.</h3>
+                    </div>
+                </li>
+					  
+               
+            </ul>
+
+        </section><!--/#How-->
+
+    </div>
+
+		</section>
+
+		<nav class="subnav">
+			
+					</nav>
+
+		<footer role="contentinfo">
+
+			<div id="contact" itemscope itemtype="http://schema.org/Organization">
+
+				<div class="inner">
+
+					<h4><a itemprop="name" href="http://haveasync.com">Haveasync</a></h4>
+
+					<p><i class="icon icon-envelope-alt"></i><a itemprop="email" href="mailto:info@haveasync.com">info@haveasync.com</a></p>
+
+					<p><i class="icon icon-phone"></i><span itemprop="telephone">+39 06 39728216</span></p>
+
+					<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+						<i class="icon icon-map-marker"></i>
+						<span itemprop="streetAddress">Via Romeo Romei, 15</span>,
+						<span itemprop="addressLocality">Roma</span>,
+						<span itemprop="addressRegion">Lazio</span>,
+						<span itemprop="postalCode">00196</span>,
+						<abbr itemprop="addressCountry" itemscope itemtype="http://schema.org/Country" title="Italy">IT</abbr>
+				    </p>
+
+				</div>
+
+			</div>
+
+			<p><small>&copy;2013 Have A Sync</small></p>
+			<!--<p><small>Our website uses delicious cookies to improve your experience. We'll assume you're ok with that.</small></p>-->
+
+		</footer>
+
+		
+		<!-- jQuery from Google's CDN with local fallback -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.3.min.js"><\/script>')</script>
+
+        <script src="js/libs/wfl.js"></script>
+
+		<!--
+			Console support
+			Mobile Nav
+			Extra jQuery CSS selectors
+			JS Placeholder support
+		-->
+		<script src="js/libs/plugins.js"></script>
+
+		<!-- Touch -->
+		<script src="js/libs/jquery.pep.js"></script>
+
+		<!-- Some mobile helper functions eg scalefix -->
+		<script src="js/libs/helper.js"></script>
+
+		<!-- Initialises scripts from plugins.js and helper.js -->
+		<script src="js/scriptH5.js"></script>
+
+		<!-- Google Goggles -->
+		
+		
+	</body>
+</html>
+

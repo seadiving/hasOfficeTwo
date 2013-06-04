@@ -10,32 +10,32 @@ class listTitoli {
 </p>
 -->
 
- <div id="searchPanel">
 
+
+Insert a keyword
 <div id="search-form">
 
     <form action="index.php?page=titoli/listTitoli" method="post">
-        <fieldset>
-            <label for="search-title">Titolo: </label>
-            <input name="search-title" id="search-title" type="text" value="<?php echo array_key_exists('searchTitle', $_REQUEST)?$_REQUEST['searchTitle']:""; ?>">
-            <label for="search-isrc">Isrc: </label>
-            <input name="search-isrc" id="search-isrc" type="text" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>"><br>
-            <input id="search-button" value="Search" type="submit" class="button">
-        </fieldset>
+        
+            <!--<label for="search-title">Titolo: </label>-->
+            <input class="input" name="search-title" id="search-title" type="text" placeholder="title Key" value="<?php echo array_key_exists('searchTitle', $_REQUEST)?$_REQUEST['searchTitle']:""; ?>">
+            <label for="search-isrc">or</label>
+            <input name="search-isrc" id="search-isrc" type="text" placeholder="isrc" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>">            			<input id="search-button" value="Search" type="submit" class="button">
+       
     </form>
 </div>
-      
-     
+    
+    <br><br> 
             
 			
                         
 			<div></div>
 			<div>
-                <table cellpadding=5 cellspacing=5 style="width: 380px;position:relative; left:15px; " class="ui-jqgrid-btable" aria-labelledby="gbox_results_grid" aria-multiselectable="false" role="grid" id="results_grid" border="0" cellpadding="0" cellspacing="0" >
+                <table cellpadding=2 cellspacing=5 style="width: 380px;position:relative; left:5px;" class="ui-jqgrid-btable" aria-labelledby="gbox_results_grid" aria-multiselectable="false" role="grid" id="results_grid" border="0" cellpadding="0" cellspacing="0" >
                     <tbody>
                         
                          <?php foreach ($result as $titolo): ?>
-                        <tr id="<?php echo $titolo->getId();?>" role="row" class="ui-widget-content">
+                        <tr id="<?php echo $titolo->getId();?>" role="row" class="getContent">
                             <td  class="titoliColor" valign="top" title="<?php echo $titolo->getBrano();?>" ><?php echo $titolo->getBrano();?></td>
 							 <td  class="small" valign="top" title="<?php echo $titolo->getEsecutore();?>" ><?php echo $titolo->getEsecutore();?></td>
                             <td  NOWRAP class="small" valign="top" title="<?php echo $titolo->getISRC();?>" ><?php echo $titolo->getISRC();?></td>
@@ -60,19 +60,19 @@ class listTitoli {
         
     </div>
     
-</div>
 
 
 <script>
-    jQuery(document).ready(function(){
-        jQuery(".ui-jqgrid-btable .ui-widget-content").hover(function() {
-        if(jQuery(this).css('background-color') === 'rgb(184, 184, 184)') {
-            jQuery(this).css('background-color','white');
-        }else{
-            jQuery(this).css('background-color','rgb(184, 184, 184)');
-        }
-        });
-       jQuery(".ui-jqgrid-btable .ui-widget-content").click(function() {
+jQuery(document).ready(function(){
+
+	$('#results_grid tr').hover(function() {
+    $(this).addClass('hover');
+	}, function() {
+    $(this).removeClass('hover');
+	});
+
+
+ 	jQuery(".getContent").click(function() {
    
         window.location.href = "index.php?page=titoli/addTitoli&id="+jQuery(this).attr('id')+
                         "<?php 
@@ -83,6 +83,7 @@ class listTitoli {
                         
                         ?>";
         });
+
         jQuery("perPage").change(function() {
          window.location.href = "index.php?page=titoli/listTitoli&perPage="+jQuery(this).attr("id");
         });
@@ -92,7 +93,7 @@ class listTitoli {
 
 
 
-</div>
+
 
 
 <!--<div class="classnewtitle ui-state-default ui-corner-bottom">
