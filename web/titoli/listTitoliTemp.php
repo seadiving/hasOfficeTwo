@@ -19,14 +19,16 @@ Insert a keyword
 
         
              <input name="searchTitle" id="search-title" type="text" placeholder="title Key" value="<?php echo array_key_exists('searchTitle', $_REQUEST)?$_REQUEST['searchTitle']:""; ?>">
-             <select name="searchFindFor">
-                <option value="1" <?php echo array_key_exists('searchFindFor', $_REQUEST) &&  $_REQUEST['searchFindFor'] == "1"?"selected":""; ?> >inizia per</option>
-                <option value="2" <?php echo array_key_exists('searchFindFor', $_REQUEST) && $_REQUEST['searchFindFor'] == "2"?"selected":""; ?> >uguale a</option>
-                <option value="3" <?php echo array_key_exists('searchFindFor', $_REQUEST) && $_REQUEST['searchFindFor'] == "3"?"selected":""; ?> >contiene</option>
-            </select>
+             
             <label for="searchIsrc">or </label>
-            <input name="searchIsrc" id="search-isrc" type="text" placeholder="isrc" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>"><br>
-            <input id="search-button" value="<?php echo $cerca?>" type="submit" class="button">
+			<input name="searchIsrc" id="search-isrc" type="text" placeholder="isrc" value="<?php echo array_key_exists('searchIsrc', $_REQUEST)?$_REQUEST['searchIsrc']:""; ?>">
+			<select name="searchFindFor">
+			                <option value="1" <?php echo array_key_exists('searchFindFor', $_REQUEST) &&  $_REQUEST['searchFindFor'] == "1"?"selected":""; ?> >inizia per</option>
+			                <option value="2" <?php echo array_key_exists('searchFindFor', $_REQUEST) && $_REQUEST['searchFindFor'] == "2"?"selected":""; ?> >uguale a</option>
+			                <option value="3" <?php echo array_key_exists('searchFindFor', $_REQUEST) && $_REQUEST['searchFindFor'] == "3"?"selected":""; ?> >contiene</option>
+			            </select>
+
+			            <input id="search-button" value="<?php echo $cerca; ?>" type="submit" class="button">
      
 
     </form>

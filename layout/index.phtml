@@ -1,3 +1,5 @@
+<?php include ("../lang/messages.php"); ?>
+
 <!doctype html>
 <!-- HTML5 Boilerplate -->
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -50,6 +52,7 @@
 		<span class="logo"><a href="http://manage.haveasync.com/"><img src="http://www.haveasync.com/images/logoSenza.png"></a></span>
 		<span class="musiclic">music licensing</span>
 		</div>
+			<a href="#lang" id="nav-lang"><i class="menu-icon icon-lang"></i><span>Language</span></a>	
 			<a href="#contact" id="nav-contact"><i class="menu-icon icon-contact"></i><span>Contact</span></a>		 
 					 	
 			<?php } else {?>
@@ -72,15 +75,15 @@
 		<span class="logo"><a href="http://manage.haveasync.com/"><img src="http://www.haveasync.com/images/logoSenza.png"></a></span>
 		<span class="musiclic">music licensing</span>
 		</div>
-
+			<a href="#lang" id="nav-lang"><i class="menu-icon icon-lang"></i><span>Language</span></a>	
 			<a href="#contact" id="nav-contact"><i class="menu-icon icon-contact"></i><span>Contact</span></a>
 		<?php	} ?>
 
 
-
+<BR><br>
 		 
 		<section role="main">
-		
+		<?php include ("../lang/lang.php"); ?>
 		<?php if(!isset($_SESSION['user'])){?>	
 		<?php if ($flashes): ?>
 					                            <ul id="flashes">
@@ -93,205 +96,7 @@
 					                        <?php require $template; ?>
 		</section>
 		<?php } else { ?>
-		<div class="grid-wrap shuffle grid-home">
-
-       <header id="intro" class="block-wrap ignore-shuffle" data-rowspan="2" data-colspan="2">
-            <hgroup class="block text-only">
-               <h1>Our studio</h1>
-                    <h2>We&rsquo;ve created an environment that <em>fosters enthusiasm</em> and lets everyone work to their full potential.</h2>
-            </hgroup>
-        </header>
-		<ul>
-		<li class="block-wrap" data-rowspan="1" data-colspan="1">
-                            <div class="block text-only">
-                                                                    <figure class="with-hidden-caption">
-    <img src="img/base/logoSenza.png" rel="img/studio/coffee-cake.JPG" alt="" />
-    <noscript><img src="img/studio/coffee-cake.JPG" alt="" /></noscript>
-    <figcaption><p>No meeting is complete without coffee and cake.</p></figcaption>
-</figure>                                                             </div>
-                        </li>     
-        
-        </ul>
-        
-        
-        <section id="studio" class="studio">
-
-            <header class="block-wrap" data-rowspan="1" data-colspan="1">
-                <hgroup class="block text-only">
-                    <h1>Haveasync</h1>
-                    <h2>We&rsquo;ve created an environment that <em>fosters enthusiasm</em> and lets everyone work to their full potential.</h2>
-                </hgroup>
-            </header>
-            
-   
-            <div class="pep-wrapper">
-                <ul>
-                
-                
-             	 
-                                            <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                            <div class="block image">
-                                                                    <figure class="with-hidden-caption">
-    <img class="resize" src="img/base/spacer.png" rel="img/studio/gav-desk.JPG" alt="" />
-    <noscript><img src="img/studio/gav-desk.JPG" alt="" /></noscript>
-    <figcaption><p>Dan watching Gav do all the work.</p></figcaption>
-</figure>                                                             </div>
-                        </li>
-                                            <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                            <div class="block image">
-                                                                    <figure class="with-hidden-caption">
-    <img class="resize" src="img/base/spacer.png" rel="img/studio/craig-desk.JPG" alt="" />
-    <noscript><img src="img/studio/craig-desk.JPG" alt="" /></noscript>
-    <figcaption><p>Craig, deep in thought.</p></figcaption>
-</figure>                                                             </div>
-                        </li>
-                                            <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                            <div class="block image">
-                                                                    <figure class="with-hidden-caption">
-    <img class="resize" src="img/base/spacer.png" rel="img/studio/buttons.JPG" alt="" />
-    <noscript><img src="img/studio/buttons.JPG" alt="" /></noscript>
-    <figcaption><p>Our neighbours are lucky that the volume on our 70&#039;s record player isn&#039;t too loud.</p></figcaption>
-</figure>                                                             </div>
-                        </li>
-                                            <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                            <div class="block image">
-                                                                    <figure class="with-hidden-caption">
-    <img class="resize" src="img/base/spacer.png" rel="img/studio/dan-lounge.JPG" alt="" />
-    <noscript><img src="img/studio/dan-lounge.JPG" alt="" /></noscript>
-    <figcaption><p>Nice socks Dan.</p></figcaption>
-</figure>                                                             </div>
-                        </li>   
-                
-              								<li class="block-wrap" data-rowspan="1" data-colspan="1">
-                            <div class="block image">
-                                                                    <figure class="with-hidden-caption">
-    <img class="resize" src="img/base/spacer.png" rel="img/studio/coffee-cake.JPG" alt="" />
-    <noscript><img src="img/studio/coffee-cake.JPG" alt="" /></noscript>
-    <figcaption><p>No meeting is complete without coffee and cake.</p></figcaption>
-</figure>                                                             </div>
-                        </li>     
-                
-		
-            
-            
-           </ul>
-           </div> 
-    </section><!--/#studio-->
-      
-      <section class="projects" id="projects">
-
-            <header class="block-wrap" data-rowspan="2" data-colspan="2">
-                <hgroup class="block text-only">
-                    <?php if ($flashes): ?>
-					                            <ul id="flashes">
-					                            <?php foreach ($flashes as $flash): ?>
-					                                <li><?php echo $flash; ?></li>
-					                            <?php endforeach; ?>
-					                            </ul>
-					                        <?php endif; ?>
-
-					                        <?php require $template; ?>
-					                       
-                </hgroup>
-            </header>
-
-            <ul>
-                                    <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                        <figure class="block team-block">
-                            <a class="link-block" href="team/andy/index.html">
-                                <img class="resize" src="img/base/spacer.png" rel="img/team/andy.jpg" alt="Andy Shield" />
-                                <noscript><img src="img/team/andy.jpg" alt="Andy Shield" /></noscript>
-                            </a>
-                            <h3><a href="team/andy/index.html">Andy Shield</a></h3>
-                            <p>Managing Director</p>
-                        </figure>
-                    </li>
-                                    <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                        <figure class="block team-block">
-                            <a class="link-block" href="team/jim/index.html">
-                                <img class="resize" src="img/base/spacer.png" rel="img/team/jim.jpg" alt="Jim Ramsden" />
-                                <noscript><img src="img/team/jim.jpg" alt="Jim Ramsden" /></noscript>
-                            </a>
-                            <h3><a href="team/jim/index.html">Jim Ramsden</a></h3>
-                            <p>Creative Director</p>
-                        </figure>
-                    </li> 
-                    </ul>
-
-        </section><!--/#titoli--> 
-        
-        
-        <section class="team" id="team">
-        <header id="team" class="block-wrap ignore-shuffle" data-rowspan="1" data-colspan="1">
-        <hgroup class="block text-only"> 
-       	<h2>In alto a destra<em>change</em> _>peoples lives.</h2>
-        </hgroup>
-        </header>
-        <ul>
-        <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                        <figure class="block team-block">
-                            <a class="link-block" href="team/jim/index.html">
-                                <img class="resize" src="img/base/spacer.png" rel="img/team/jim.jpg" alt="Jim Ramsden" />
-                                <noscript><img src="img/team/jim.jpg" alt="Jim Ramsden" /></noscript>
-                            </a>
-                            <h3><a href="team/jim/index.html">Jim Ramsden</a></h3>
-                            <p>Creative Director</p>
-                        </figure>
-                    </li> 
-        <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                        <figure class="block team-block">
-                            <a class="link-block" href="team/jim/index.html">
-                                <img class="resize" src="img/base/spacer.png" rel="img/team/jim.jpg" alt="Jim Ramsden" />
-                                <noscript><img src="img/team/jim.jpg" alt="Jim Ramsden" /></noscript>
-                            </a>
-                            <h3><a href="team/jim/index.html">Jim Ramsden</a></h3>
-                            <p>Creative Director</p>
-                        </figure>
-                    </li> 
-        
-                    </ul>
-        
-        </section><!--/#profile-->
-        
-        
-        <section class="ethos" id="ethos">
-        <header id="ethos" class="block-wrap ignore-shuffle" data-rowspan="1" data-colspan="1">
-        <hgroup class="block text-only"> 
-        <a  href="index.php?action=logout"><i class="menu-icon icon-logout"></i><span>Logout</span></a>
-        </hgroup>
-        </header>
-         <ul>
-                                    <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                        <figure class="block team-block">
-                            <a class="link-block" href="team/andy/index.html">
-                                <img class="resize" src="img/base/spacer.png" rel="img/team/andy.jpg" alt="Andy Shield" />
-                                <noscript><img src="img/team/andy.jpg" alt="Andy Shield" /></noscript>
-                            </a>
-                            <h3><a href="team/andy/index.html">Andy Shield</a></h3>
-                            <p>Managing Director</p>
-                        </figure>
-                    </li>
-                    
-                     <li class="block-wrap" data-rowspan="1" data-colspan="1">
-                        <figure class="block team-block">
-                            <a class="link-block" href="team/andy/index.html">
-                                <img class="resize" src="img/base/spacer.png" rel="img/team/andy.jpg" alt="Andy Shield" />
-                                <noscript><img src="img/team/andy.jpg" alt="Andy Shield" /></noscript>
-                            </a>
-                            <h3><a href="team/andy/index.html">Andy Shield</a></h3>
-                            <p>Managing Director</p>
-                        </figure>
-                    </li>
-                    
-                    
-                </ul>
-        </section><!--/#logout-->
-        
-        
-        
-        
-        </div>
-        </section>
+		<?php include("inc/home.php"); ?>
 <!--- middle point-->
 		<nav class="subnav">
 			
@@ -381,7 +186,7 @@
 		<script src="js/libs/helper.js"></script>
 
 		<!-- Initialises scripts from plugins.js and helper.js -->
-		<script src="js/scriptH5.js"></script>
+		<script src="js/script.js"></script>
 
 		<!-- Google Goggles -->
 		

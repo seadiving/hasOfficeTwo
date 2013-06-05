@@ -21,6 +21,8 @@ if (!isset($lang) or ($lang == "it")) {
 	$no = "no";
 	$back = "indietro";
 	$cerca = "cerca";
+	$searchKey = "parola chiave di ricerca";
+	$signIn = "Fai login";
 }
 
 
@@ -29,6 +31,9 @@ if ($lang == "en") {
 	$no = "no";
 	$back = "back";
 	$cerca = "search";
+	$searchKey = "insert a keyword";
+	$signIn = "Please sign in";
+
 }
 
 

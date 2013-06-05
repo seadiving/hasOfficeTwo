@@ -1,5 +1,5 @@
 WebFontConfig = {
-    google: { families: [ 'PT+Sans+Narrow:400,700:latin' ] }
+    google: { families: [ 'Lato:400,700,300,100,900:latin' ] }
   };
   (function() {
     var wf = document.createElement('script');
@@ -9,4 +9,4 @@ WebFontConfig = {
     wf.async = 'true';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
-  })(); 
+  })();

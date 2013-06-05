@@ -4,7 +4,7 @@
 
 <form action="index.php" method="post" id="basic_login">
 
- <h2 class="form-signin-heading">Please sign in</h2>
+ <h2>Please sign in</h2>
 
 <table>
 
